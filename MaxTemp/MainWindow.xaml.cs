@@ -44,12 +44,12 @@ namespace MaxTemp
             StreamReader reader = null;
             if (File.Exists(tempCSV)) {
                 reader = new StreamReader(File.OpenRead(tempCSV));
-                List<string> newList = new List<string>();
+                List<string> sortedList = new List<string>();
                 while (!reader.EndOfStream) {
                     var line = reader.ReadLine();
                     var values = line.Split(',');
                     foreach (var elements in values) {
-                        newList.Add(elements);
+                        sortedList.Add(elements);
                         Debug.WriteLine(elements);
                     }
                 }
