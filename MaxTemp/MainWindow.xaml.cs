@@ -41,15 +41,14 @@ namespace MaxTemp
         {
             //Zugriff auf Datei erstellen.
             String tempCSV = "C:\\Users\\Tobi\\Documents\\Schule\\Softwareentwicklung\\TempMaxProjekt\\MaxTemp(1)\\MaxTemp\\MaxTemp\\temps.csv";
-            StreamReader reader = null;
+            List<string> csvList = new List<string>();
             if (File.Exists(tempCSV)) {
-                reader = new StreamReader(File.OpenRead(tempCSV));
-                List<string> sortedList = new List<string>();
+                StreamReader reader = new StreamReader(File.OpenRead(tempCSV));
                 while (!reader.EndOfStream) {
                     var line = reader.ReadLine();
                     var values = line.Split(',');
                     foreach (var elements in values) {
-                        sortedList.Add(elements);
+                        csvList.Add(elements);
                         Debug.WriteLine(elements);
                     }
                 }
@@ -57,22 +56,23 @@ namespace MaxTemp
             } else {
                 Debug.WriteLine("File not found");
             }
-                                                 
+            csvList.Sort();
+
             //Anfangswert setzen, um sinnvoll vergleichen zu können.
-            Console.Write("Temperatur eingeben: ");
-            String tempInput = Console.ReadLine();
-            int convertedInput = Convert.ToInt32(tempInput);
 
             //In einer Schleife die Werte holen und auswerten. Den größten Wert "merken".
-
+            List<string> sortedList = csvList.GetRange(35, 33);
+            foreach (var element in sortedList) {
+                Console.WriteLine(element);
+            }
+            String highestTemp = sortedList.Last();
             //Datei wieder freigeben.
-
 
             //Höchstwert auf Oberfläche ausgeben.
 
             MessageBox.Show("Gleich kachelt das Programm...");
             //kommentieren Sie die Exception aus.
-            throw new Exception("peng");
+            //throw new Exception("peng");
         }
     }
 }
