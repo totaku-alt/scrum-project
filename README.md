@@ -1,3 +1,3 @@
 # Scrum Projekt "Max-Temp"
 
-## Teilnehmer: Tobi, Tobi, Georg, Marco, Denis
+## Teilnehmer: Tobi, Tobi, Georg, Marco, Denis, Flo
