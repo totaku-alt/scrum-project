@@ -34,40 +34,70 @@ namespace MaxTemp {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        /// 
         private void BtnAuswerten_Click(object sender, RoutedEventArgs e) {
+            //Git commit
+            string realString = "S1";
             //Zugriff auf Datei erstellen.
-            String tempCSV = "C:\\Users\\Tobi\\Documents\\Schule\\Softwareentwicklung\\TempMaxProjekt\\MaxTemp(1)\\MaxTemp\\MaxTemp\\temps.csv";
+            string fileName = "temps.csv";
+            string path = System.IO.Path.Combine(Environment.CurrentDirectory, @"MaxTemp\", fileName);
+            // System.IO.Path.Combine(Environment.CurrentDirectory = Geht in deinen aktuellen VisualStudio Projekt Ordner und schaut nach Der Datei die im @ deklariert ist.
 
-            List<string> csvAsList = new List<string>();
 
-            if (File.Exists(tempCSV)) {
-                StreamReader reader = new StreamReader(File.OpenRead(tempCSV));
-                while (!reader.EndOfStream) {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
-                    foreach (var elements in values) { 
-                        Debug.WriteLine(elements);
-                        csvAsList.Add(elements);
-                    }
-                }
 
-            } else {
-                Debug.WriteLine("File not found");
+            string[] csvLines = File.ReadAllLines(path);
+
+            Array.Sort(csvLines);
+
+            for (int i = 0; i < csvLines.Length; i++)
+            {
+                Debug.WriteLine(csvLines[i]);
             }
-            csvAsList.Sort();
+
+
+
+
+
+
+
+
+
+            //List<string> csvList = new List<string>();
+            //if (File.Exists(fileName))
+            //{
+            //    StreamReader reader = new StreamReader(File.OpenRead(fileName));
+            //    while (!reader.EndOfStream)
+            //    {
+            //        var line = reader.ReadLine();
+            //        var values = line.Split(',');
+            //        foreach (var elements in values)
+            //        {
+            //            csvList.Add(elements);
+            //            Debug.WriteLine(elements);
+            //        }
+            //    }
+
+            //}
+            //else
+            //{
+            //    Debug.WriteLine("File not found");
+            //}
+            //csvList.Sort();
 
             //Anfangswert setzen, um sinnvoll vergleichen zu können.
 
             //In einer Schleife die Werte holen und auswerten. Den größten Wert "merken".
-            List<string> sortedList = csvAsList.GetRange(35, 33);
-            foreach (var element in sortedList) {
-                Console.WriteLine(element);
-            }
-            String highestTemp = sortedList.Last();
+
+            //List<string> sortedList = csvAsList.GetRange(35, 33);
+            //foreach (var element in sortedList) {
+            //    Console.WriteLine(element);
+            //}
+            //String highestTemp = sortedList.Last();
+
             //Datei wieder freigeben
 
             //Höchstwert auf Oberfläche ausgeben.
-            lblAusgabe.Content = $"Höchste Temperatur ist: {highestTemp} °C";
+            //lblAusgabe.Content = $"Höchste Temperatur ist: {highestTemp} °C";
 
             //MessageBox.Show("Gleich kachelt das Programm...");
             //kommentieren Sie die Exception aus.
