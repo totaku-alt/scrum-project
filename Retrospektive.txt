@@ -1,0 +1,13 @@
+Was haben wir gut gemacht ? 
+- Scrum-Board Organisation ist gut gelaufen
+- Github Repository und Account erstellen lief gut
+
+Was haben wir schlecht gemacht ?
+- Fertiges Programm war sehr hardcoded -> Aufgabe neu angefangen
+- Git Probleme -> Pull, Commit und Push
+- Kein Arbeitsvorgang nach "Try and error" Methode -> Schnell demotiviert
+
+Was sollten wir verbessern ?
+- Gerechte und sinnvolle Aufgabenverteilung
+- Scrum-Meeting besser halten -> Klarere Informationen / Rückmeldungen
+
