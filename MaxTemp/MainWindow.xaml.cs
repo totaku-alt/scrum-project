@@ -55,14 +55,24 @@ namespace MaxTemp {
             for (int i = 0; i < csvLines.Length; i++)
             {
                 string test = csvLines[i].Remove(3, 20);
-                
-                if(test.Contains(realString)) {
-                    Console.WriteLine(csvLines[csvLines.Length -1]);
-                } else
-                {
-                    Console.WriteLine(csvLines[csvLines.Length - 1]);
-                }
+
+                arlist.Add(test);
+
+                //if(test.Contains(realString)) {
+                //    Console.WriteLine(csvLines[csvLines.Length -1]);
+                //} else
+                //{
+                //    Console.WriteLine(csvLines[csvLines.Length - 1]);
+                //}
             }
+
+            arlist.Sort();
+
+            foreach (string element in arlist)
+            {
+                   Console.WriteLine(element);
+            }
+            
 
 
 
