@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -49,9 +50,18 @@ namespace MaxTemp {
 
             Array.Sort(csvLines);
 
+            ArrayList arlist = new ArrayList();
+
             for (int i = 0; i < csvLines.Length; i++)
             {
-                Debug.WriteLine(csvLines[i]);
+                string test = csvLines[i].Remove(3, 20);
+                
+                if(test.Contains(realString)) {
+                    Console.WriteLine(csvLines[csvLines.Length -1]);
+                } else
+                {
+                    Console.WriteLine(csvLines[csvLines.Length - 1]);
+                }
             }
 
 
