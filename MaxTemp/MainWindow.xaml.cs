@@ -37,91 +37,39 @@ namespace MaxTemp {
         /// <param name="e"></param>
         /// 
         private void BtnAuswerten_Click(object sender, RoutedEventArgs e) {
-            //Git commit
-            string realString = "S1";
+            //Hier wird der Sensor eingefügt
+            string sensorName = txtEingabe.Text;
             //Zugriff auf Datei erstellen.
             string fileName = "temps.csv";
             string path = System.IO.Path.Combine(Environment.CurrentDirectory, @"MaxTemp\", fileName);
             // System.IO.Path.Combine(Environment.CurrentDirectory = Geht in deinen aktuellen VisualStudio Projekt Ordner und schaut nach Der Datei die im @ deklariert ist.
 
-
-
+            //csv wird in einem Array zugewiesen
             string[] csvLines = File.ReadAllLines(path);
 
             Array.Sort(csvLines);
 
+            //List Objekt wird verwendet um die Add() Methode zu verwenden
             ArrayList arlist = new ArrayList();
 
+            //Der sensorName bestimmt die Elemente die in Liste hinzugefügt werden
             for (int i = 0; i < csvLines.Length; i++)
             {
-                string test = csvLines[i].Remove(3, 20);
-
-                arlist.Add(test);
-
-                //if(test.Contains(realString)) {
-                //    Console.WriteLine(csvLines[csvLines.Length -1]);
-                //} else
-                //{
-                //    Console.WriteLine(csvLines[csvLines.Length - 1]);
-                //}
+                string changedSensor = csvLines[i].Remove(3, 20);
+                if (changedSensor.Contains(sensorName))
+                {
+                    arlist.Add(changedSensor);
+                }  
             }
 
+            //Hier wird die Liste noch einmal sortiert damit am Ende die Höchsttemperatur ist
             arlist.Sort();
 
-            foreach (string element in arlist)
-            {
-                   Console.WriteLine(element);
-            }
+            //Letzter Wert in der Liste
+            string lastElement = (string)arlist[arlist.Count - 1];
             
-
-
-
-
-
-
-
-
-
-            //List<string> csvList = new List<string>();
-            //if (File.Exists(fileName))
-            //{
-            //    StreamReader reader = new StreamReader(File.OpenRead(fileName));
-            //    while (!reader.EndOfStream)
-            //    {
-            //        var line = reader.ReadLine();
-            //        var values = line.Split(',');
-            //        foreach (var elements in values)
-            //        {
-            //            csvList.Add(elements);
-            //            Debug.WriteLine(elements);
-            //        }
-            //    }
-
-            //}
-            //else
-            //{
-            //    Debug.WriteLine("File not found");
-            //}
-            //csvList.Sort();
-
-            //Anfangswert setzen, um sinnvoll vergleichen zu können.
-
-            //In einer Schleife die Werte holen und auswerten. Den größten Wert "merken".
-
-            //List<string> sortedList = csvAsList.GetRange(35, 33);
-            //foreach (var element in sortedList) {
-            //    Console.WriteLine(element);
-            //}
-            //String highestTemp = sortedList.Last();
-
-            //Datei wieder freigeben
-
-            //Höchstwert auf Oberfläche ausgeben.
-            //lblAusgabe.Content = $"Höchste Temperatur ist: {highestTemp} °C";
-
-            //MessageBox.Show("Gleich kachelt das Programm...");
-            //kommentieren Sie die Exception aus.
-            //throw new Exception("peng");
+            //Ausgabe des Wertes in der xaml
+            lblAusgabe.Content = $"Höchste Temperatur ist: {lastElement} °C";
         }
     }
 }
